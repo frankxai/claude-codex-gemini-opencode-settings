@@ -1,0 +1,24 @@
+{
+  "name": "creator-tools",
+  "version": "1.0.0",
+  "description": "AI-powered content creation tools for solopreneurs and creators",
+  "author": "FrankX",
+  "homepage": "https://frankx.ai",
+  "repository": "https://github.com/frankxai/claude-plugins",
+  "license": "Apache-2.0",
+  "keywords": ["content", "creator", "publishing", "AI", "automation"],
+  "components": {
+    "commands": [
+      "factory",
+      "publish",
+      "content-strategy"
+    ],
+    "skills": [
+      "content-factory",
+      "agentic-creator-os"
+    ],
+    "agents": [
+      "creation-engine"
+    ]
+  }
+}

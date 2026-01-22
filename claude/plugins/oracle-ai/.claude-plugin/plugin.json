@@ -1,0 +1,24 @@
+{
+  "name": "oracle-ai",
+  "version": "1.0.0",
+  "description": "Enterprise AI architecture patterns using Oracle Cloud Infrastructure",
+  "author": "FrankX",
+  "homepage": "https://frankx.ai/ai-architect",
+  "repository": "https://github.com/frankxai/oracle-ai-skills",
+  "license": "Apache-2.0",
+  "keywords": ["oracle", "OCI", "GenAI", "enterprise", "architecture", "cloud"],
+  "components": {
+    "commands": [
+      "oracle-work",
+      "prototype"
+    ],
+    "skills": [
+      "oci-services-expert",
+      "oracle-adk",
+      "oracle-agent-spec"
+    ],
+    "agents": [
+      "starlight-architect"
+    ]
+  }
+}

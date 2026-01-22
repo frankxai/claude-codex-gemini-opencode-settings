@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cline/cline/main/settings-schema.json",
+  "api": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514"
+  },
+  "behavior": {
+    "autoApprove": false,
+    "autoApprovePatterns": [
+      "*.md",
+      "*.json"
+    ],
+    "maxTokens": 8192,
+    "temperature": 0.7
+  },
+  "customInstructions": "You are a creative AI assistant helping a musician-technologist build transformative content and products. Follow the FrankX brand voice: technical authority with creative wisdom. Prioritize soul-aligned technology that serves human expression.",
+  "workspace": {
+    "excludePatterns": [
+      "**/node_modules/**",
+      "**/.git/**",
+      "**/dist/**",
+      "**/build/**"
+    ]
+  }
+}

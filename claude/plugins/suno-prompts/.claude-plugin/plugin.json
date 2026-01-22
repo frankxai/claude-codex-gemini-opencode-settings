@@ -1,0 +1,20 @@
+{
+  "name": "suno-prompts",
+  "version": "1.0.0",
+  "description": "Expert Suno AI music generation prompts and techniques",
+  "author": "FrankX",
+  "homepage": "https://frankx.ai/products/vibe-os",
+  "repository": "https://github.com/frankxai/suno-prompt-library",
+  "license": "Apache-2.0",
+  "keywords": ["suno", "music", "AI", "prompts", "generation", "frequency"],
+  "components": {
+    "commands": [],
+    "skills": [
+      "suno-ai-mastery",
+      "suno-prompt-architect"
+    ],
+    "agents": [
+      "frequency-alchemist"
+    ]
+  }
+}
