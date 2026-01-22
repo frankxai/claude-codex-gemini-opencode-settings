@@ -1,0 +1,98 @@
+{
+  "name": "prompt-library",
+  "version": "1.0.0",
+  "description": "Comprehensive prompt engineering system with harvesting, architecture, testing, and evolution capabilities",
+  "author": "FrankX",
+  "homepage": "https://github.com/frankxai/claude-codex-gemini-opencode-settings",
+  "keywords": [
+    "prompts",
+    "prompt-engineering",
+    "chain-of-thought",
+    "tree-of-thought",
+    "react-patterns",
+    "ai-research"
+  ],
+  "agents": [
+    {
+      "name": "Prompt Harvester",
+      "file": "agents/prompt-harvester.md",
+      "description": "Scans GitHub, AI labs, and research papers for elite prompts",
+      "activation": "Activate Prompt Harvester to scan [source] for [domain] prompts"
+    },
+    {
+      "name": "Prompt Architect",
+      "file": "agents/prompt-architect.md",
+      "description": "Designs advanced prompts using CoT, ToT, ReAct patterns",
+      "activation": "Activate Prompt Architect to design a [task] prompt using [pattern]"
+    },
+    {
+      "name": "Prompt Tester",
+      "file": "agents/prompt-tester.md",
+      "description": "Validates prompt quality, safety, and brand alignment",
+      "activation": "Activate Prompt Tester to validate [prompt] for [use case]"
+    },
+    {
+      "name": "Prompt Evolver",
+      "file": "agents/prompt-evolver.md",
+      "description": "Evolves prompts based on new AI research and performance data",
+      "activation": "Activate Prompt Evolver to improve [prompt] based on [research/metrics]"
+    }
+  ],
+  "commands": [
+    {
+      "name": "harvest",
+      "file": "commands/harvest.md",
+      "description": "Harvest elite prompts from specified sources",
+      "usage": "/harvest [github|arxiv|weekly|trending|dedupe] [options]"
+    },
+    {
+      "name": "architect",
+      "file": "commands/architect.md",
+      "description": "Design advanced prompts with reasoning patterns",
+      "usage": "/architect [design|pattern|optimize|template|analyze] [options]"
+    },
+    {
+      "name": "test",
+      "file": "commands/test.md",
+      "description": "Validate and test prompt effectiveness",
+      "usage": "/test [prompt|safety|brand|compare|regression] [options]"
+    },
+    {
+      "name": "evolve",
+      "file": "commands/evolve.md",
+      "description": "Evolve prompts based on research and metrics",
+      "usage": "/evolve [prompt|research|metrics|compare|history|rollback] [options]"
+    }
+  ],
+  "skills": [
+    {
+      "name": "prompt-engineering",
+      "file": "skills/prompt-engineering/SKILL.md",
+      "description": "Core prompt engineering patterns and techniques",
+      "topics": [
+        "Chain-of-Thought",
+        "Tree-of-Thought",
+        "ReAct",
+        "Self-Consistency",
+        "Constitutional Constraints",
+        "Token Optimization",
+        "Safety Patterns"
+      ]
+    }
+  ],
+  "dependencies": [],
+  "configuration": {
+    "promptsDirectory": "./prompts",
+    "harvestSources": [
+      "github:anthropics/*",
+      "github:openai/*",
+      "github:google-deepmind/*",
+      "arxiv:cs.CL",
+      "arxiv:cs.AI"
+    ],
+    "qualityThreshold": 0.8,
+    "brandVoice": "professional-technical-accessible",
+    "testingEnabled": true,
+    "evolutionCycle": "quarterly"
+  }
+}

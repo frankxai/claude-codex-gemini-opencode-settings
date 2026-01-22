@@ -1,0 +1,17 @@
+{
+  "name": "agentic-workflows",
+  "version": "1.0.0",
+  "description": "Multi-agent orchestration and creator intelligence systems - AI departments, task decomposition, parallel execution",
+  "author": "FrankX",
+  "repository": "https://github.com/frankxai/claude-codex-gemini-opencode-settings",
+  "commands": [
+    "agentic-creator-os",
+    "creator-intelligence-system",
+    "agentic-orchestration"
+  ],
+  "skills": [
+    "suno-prompt-architect",
+    "oci-services-expert"
+  ],
+  "tags": ["agents", "orchestration", "multi-agent", "workflows", "creator-os"]
+}

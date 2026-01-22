@@ -1,0 +1,146 @@
+# OpenAI Codex CLI Configuration
+# https://github.com/openai/codex-cli
+
+[general]
+# Model to use for code generation
+model = "gpt-4o"
+
+# Temperature for responses (0.0 = deterministic, 1.0 = creative)
+temperature = 0.7
+
+# Maximum tokens in response
+max_tokens = 4096
+
+# Enable streaming responses
+stream = true
+
+[editor]
+# Default editor for viewing/editing files
+editor = "code"
+
+# Auto-apply suggested changes (false = ask first)
+auto_apply = false
+
+# Show diff before applying changes
+show_diff = true
+
+[safety]
+# Require confirmation for destructive operations
+confirm_destructive = true
+
+# Commands that always require confirmation
+dangerous_commands = [
+    "rm -rf",
+    "git push --force",
+    "git reset --hard",
+    "drop table",
+    "delete from"
+]
+
+# File patterns to never modify
+protected_files = [
+    ".env",
+    ".env.local",
+    "*.pem",
+    "*.key",
+    "credentials.json",
+    "secrets.yaml"
+]
+
+[context]
+# Include these files automatically for context
+auto_include = [
+    "README.md",
+    "package.json",
+    "tsconfig.json",
+    "CLAUDE.md"
+]
+
+# Maximum files to include in context
+max_context_files = 20
+
+# File extensions to prioritize
+priority_extensions = [
+    ".ts",
+    ".tsx",
+    ".js",
+    ".jsx",
+    ".md",
+    ".json"
+]
+
+[output]
+# Format for code blocks
+code_format = "markdown"
+
+# Include file paths in output
+show_file_paths = true
+
+# Syntax highlighting theme
+theme = "monokai"
+
+[git]
+# Auto-stage files after modification
+auto_stage = false
+
+# Default commit message prefix
+commit_prefix = "codex: "
+
+# Branch naming pattern
+branch_pattern = "codex/{type}/{description}"
+
+[custom]
+# Custom system prompt additions
+system_prompt = """
+You are a helpful coding assistant integrated with the Agentic Creator OS ecosystem.
+
+Key principles:
+1. Write clean, maintainable TypeScript/JavaScript code
+2. Follow existing project patterns and conventions
+3. Include helpful comments for complex logic
+4. Consider accessibility and performance
+5. Use modern best practices (React 19, Next.js 15+)
+
+Tech stack preferences:
+- Frontend: Next.js, React, TypeScript, Tailwind CSS
+- Backend: Node.js, Prisma, PostgreSQL
+- Deployment: Vercel, OCI
+- Testing: Vitest, Playwright
+
+When writing code:
+- Prefer composition over inheritance
+- Use TypeScript strict mode patterns
+- Implement proper error handling
+- Add JSDoc comments for public APIs
+"""
+
+# Custom aliases
+[aliases]
+review = "Review this code for bugs and improvements"
+refactor = "Refactor this code for better readability"
+test = "Write unit tests for this code"
+docs = "Generate documentation for this code"
+explain = "Explain how this code works"
+optimize = "Optimize this code for performance"
+secure = "Review this code for security issues"
+type = "Add TypeScript types to this code"
+
+[hooks]
+# Commands to run before applying changes
+pre_apply = []
+
+# Commands to run after applying changes
+post_apply = [
+    "npm run lint:fix",
+    "npm run format"
+]
+
+[integrations]
+# GitHub integration
+github_enabled = true
+
+# Jira integration
+jira_enabled = false
+
+# Slack notifications
+slack_enabled = false

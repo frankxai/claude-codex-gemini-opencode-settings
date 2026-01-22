@@ -1,0 +1,13 @@
+{
+  "name": "research-tools",
+  "version": "1.0.0",
+  "description": "Research intelligence workflows - multi-agent research, daily scans, deep dives, visual research",
+  "author": "FrankX",
+  "repository": "https://github.com/frankxai/claude-codex-gemini-opencode-settings",
+  "commands": [
+    "research",
+    "research-visual"
+  ],
+  "skills": [],
+  "tags": ["research", "intelligence", "scanning", "deep-dive", "visual"]
+}

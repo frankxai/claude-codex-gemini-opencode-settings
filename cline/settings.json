@@ -2,24 +2,67 @@
   "$schema": "https://raw.githubusercontent.com/cline/cline/main/settings-schema.json",
   "api": {
     "provider": "anthropic",
-    "model": "claude-sonnet-4-20250514"
+    "model": "claude-sonnet-4-20250514",
+    "maxRetries": 3,
+    "timeout": 120000
   },
   "behavior": {
     "autoApprove": false,
     "autoApprovePatterns": [
       "*.md",
-      "*.json"
+      "*.json",
+      "*.txt"
     ],
     "maxTokens": 8192,
-    "temperature": 0.7
+    "temperature": 0.7,
+    "alwaysAllowReadOnly": true,
+    "alwaysAllowWriteOnly": false,
+    "enableCheckpoints": true,
+    "diffEnabled": true
   },
-  "customInstructions": "You are a creative AI assistant helping a musician-technologist build transformative content and products. Follow the FrankX brand voice: technical authority with creative wisdom. Prioritize soul-aligned technology that serves human expression.",
+  "customInstructions": "You are a creative AI assistant helping a musician-technologist build transformative content and products.\n\n## Brand Voice\nFollow the FrankX brand voice: technical authority with creative wisdom. Prioritize soul-aligned technology that serves human expression.\n\n## Code Standards\n- Write TypeScript with strict types\n- Use React functional components with hooks\n- Follow accessibility best practices (WCAG 2.1 AA)\n- Include JSDoc comments for public APIs\n- Use Tailwind CSS for styling\n\n## Tech Stack\n- Frontend: Next.js 15, React 19, TypeScript\n- Styling: Tailwind CSS, Radix UI, Framer Motion\n- Backend: Node.js, Prisma, PostgreSQL\n- Deployment: Vercel\n\n## Design System\n- Primary: Deep navy (#0F172A), Cosmic purple (#AB47C7)\n- Accent: Aurora blue (#43BFE3), Gold (#F59E0B)\n- Typography: Poppins (headings), Inter (body)\n- Style: Glassmorphism with subtle gradients",
   "workspace": {
     "excludePatterns": [
       "**/node_modules/**",
       "**/.git/**",
       "**/dist/**",
-      "**/build/**"
+      "**/build/**",
+      "**/.next/**",
+      "**/coverage/**",
+      "**/.turbo/**",
+      "**/out/**"
+    ],
+    "includePatterns": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.md",
+      "**/*.json",
+      "**/*.css",
+      "**/*.yaml",
+      "**/*.yml"
     ]
+  },
+  "terminal": {
+    "shell": "bash",
+    "outputLimit": 5000
+  },
+  "mcpServers": {
+    "memory": {
+      "enabled": true,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "filesystem": {
+      "enabled": true,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "--root", "."]
+    }
+  },
+  "shortcuts": {
+    "approve": "Ctrl+Enter",
+    "reject": "Ctrl+Backspace",
+    "newChat": "Ctrl+N"
   }
 }
