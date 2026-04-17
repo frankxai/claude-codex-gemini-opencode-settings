@@ -149,6 +149,45 @@ install_cline() {
     echo -e "${GREEN}✅ Cline setup complete!${NC}"
 }
 
+install_amcas() {
+    echo -e "${YELLOW}📦 Installing AMCAS (Arcanea Multi-Coding Agent System)...${NC}"
+    echo "   - Router Spec: @arcanea/router-spec"
+    echo "   - Dispatcher:  @arcanea/arcanea-code"
+    echo ""
+
+    # Detect package manager
+    if command -v pnpm >/dev/null 2>&1; then
+        PKG_CMD="pnpm add -g"
+    elif command -v npm >/dev/null 2>&1; then
+        PKG_CMD="npm install -g"
+    else
+        echo -e "   ${RED}✗${NC} Neither pnpm nor npm found. Install Node.js 20+ first."
+        return 1
+    fi
+
+    # Install globally (idempotent — pnpm/npm handle upgrade)
+    $PKG_CMD @arcanea/arcanea-code@latest 2>&1 | tail -3 || \
+        echo -e "   ${YELLOW}!${NC} Global install failed (package may not be published yet). Skipping."
+
+    # Run doctor if installed
+    if command -v arcanea-code >/dev/null 2>&1; then
+        echo ""
+        echo -e "   ${BLUE}Running doctor...${NC}"
+        arcanea-code doctor | sed 's/^/     /' || true
+    else
+        echo -e "   ${YELLOW}!${NC} arcanea-code not on PATH after install. Try: npm link from the monorepo clone."
+    fi
+
+    echo ""
+    echo -e "   ${BLUE}Overlays (install each repo's install.sh separately):${NC}"
+    echo "   - frankxai/oh-my-arcanea         (opencode overlay)"
+    echo "   - frankxai/claude-arcanea        (claude overlay)"
+    echo "   - frankxai/codex-arcanea         (codex overlay)"
+    echo "   - frankxai/gemini-arcanea        (gemini overlay)"
+    echo ""
+    echo -e "${GREEN}✅ AMCAS setup complete!${NC}"
+}
+
 show_summary() {
     echo ""
     echo -e "${BLUE}╔═══════════════════════════════════════════════════════════╗${NC}"
@@ -191,6 +230,9 @@ case "$TOOL" in
     cline)
         install_cline
         ;;
+    amcas)
+        install_amcas
+        ;;
     all)
         install_claude
         echo ""
@@ -201,6 +243,8 @@ case "$TOOL" in
         install_codex
         echo ""
         install_cline
+        echo ""
+        install_amcas
         show_summary
         ;;
     list)
@@ -210,9 +254,10 @@ case "$TOOL" in
         echo "  gemini   - Gemini CLI skills"
         echo "  codex    - OpenAI Codex configuration"
         echo "  cline    - Cline VSCode settings"
+        echo "  amcas    - Arcanea Multi-Coding Agent System (router + dispatcher)"
         echo "  all      - Install everything"
         echo ""
-        echo -e "${BLUE}Usage:${NC} ./install.sh [claude|opencode|gemini|codex|cline|all|list]"
+        echo -e "${BLUE}Usage:${NC} ./install.sh [claude|opencode|gemini|codex|cline|amcas|all|list]"
         ;;
     *)
         echo -e "${RED}Unknown option: $TOOL${NC}"
