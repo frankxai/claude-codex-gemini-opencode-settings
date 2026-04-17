@@ -152,7 +152,7 @@ install_cline() {
 install_amcas() {
     echo -e "${YELLOW}📦 Installing AMCAS (Arcanea Multi-Coding Agent System)...${NC}"
     echo "   - Router Spec: @arcanea/router-spec"
-    echo "   - Dispatcher:  @arcanea/arcanea-code"
+    echo "   - Orchestrator: @arcanea/orchestrator  (bins: arcanea-orchestrator, arco)"
     echo ""
 
     # Detect package manager
@@ -166,16 +166,16 @@ install_amcas() {
     fi
 
     # Install globally (idempotent — pnpm/npm handle upgrade)
-    $PKG_CMD @arcanea/arcanea-code@latest 2>&1 | tail -3 || \
+    $PKG_CMD @arcanea/orchestrator@latest 2>&1 | tail -3 || \
         echo -e "   ${YELLOW}!${NC} Global install failed (package may not be published yet). Skipping."
 
     # Run doctor if installed
-    if command -v arcanea-code >/dev/null 2>&1; then
+    if command -v arcanea-orchestrator >/dev/null 2>&1; then
         echo ""
         echo -e "   ${BLUE}Running doctor...${NC}"
-        arcanea-code doctor | sed 's/^/     /' || true
+        arcanea-orchestrator doctor | sed 's/^/     /' || true
     else
-        echo -e "   ${YELLOW}!${NC} arcanea-code not on PATH after install. Try: npm link from the monorepo clone."
+        echo -e "   ${YELLOW}!${NC} arcanea-orchestrator not on PATH after install. Try: npm link from the monorepo clone."
     fi
 
     echo ""
