@@ -48,6 +48,21 @@ install_claude() {
     plugin_count=$(find "$CLAUDE_DIR/plugins" -maxdepth 1 -type l 2>/dev/null | wc -l)
     echo -e "   ${GREEN}✓${NC} Installed $plugin_count plugins"
 
+    # Link skills from claude/skills directory
+    if [ -d "$SCRIPT_DIR/claude/skills" ]; then
+        mkdir -p "$CLAUDE_DIR/skills"
+        for skill in "$SCRIPT_DIR/claude/skills/"*/; do
+            skill_name=$(basename "$skill")
+            if [ -d "$skill" ]; then
+                rm -rf "$CLAUDE_DIR/skills/$skill_name" 2>/dev/null || true
+                ln -sf "$skill" "$CLAUDE_DIR/skills/$skill_name"
+                echo -e "   ${GREEN}✓${NC} Linked skill: /$skill_name"
+            fi
+        done
+    fi
+    skill_count=$(find "$CLAUDE_DIR/skills" -maxdepth 1 -type l 2>/dev/null | wc -l)
+    [ "$skill_count" -gt 0 ] && echo -e "   ${GREEN}✓${NC} Installed $skill_count skills"
+
     # List available commands
     echo ""
     echo -e "   ${BLUE}Available commands:${NC}"
@@ -56,6 +71,7 @@ install_claude() {
     echo "   - /agentic-creator-os, /creator-intelligence-system, /agentic-orchestration"
     echo "   - /content-calendar, /log-session"
     echo "   - /oracle-work, /prototype"
+    echo "   - /arco (Arcanea Orchestrator — routes tasks across 4 AI CLIs)"
 
     echo -e "${GREEN}✅ Claude Code setup complete!${NC}"
 }
